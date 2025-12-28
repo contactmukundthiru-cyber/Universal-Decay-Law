@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "universal-decay-law"
+version = "1.0.0"
+description = "The Universal Decay Law of Human Engagement - A Cross-Platform Empirical Law"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Mukund Thiru", email = "contactmukundthiru@gmail.com"}
+]
+keywords = [
+    "computational-social-science",
+    "engagement-decay",
+    "behavioral-science",
+    "universal-laws",
+    "human-behavior"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "pandas>=2.0.0",
+    "scikit-learn>=1.3.0",
+    "statsmodels>=0.14.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.11.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "httpx>=0.24.0",
+    "aiohttp>=3.8.0",
+    "python-dotenv>=1.0.0",
+    "asyncpg>=0.28.0",
+    "aiosqlite>=0.19.0",
+    "redis>=4.6.0",
+    "celery>=5.3.0",
+    "pymc>=5.10.0",
+    "arviz>=0.16.0",
+    "emcee>=3.1.0",
+    "corner>=2.2.0",
+    "requests>=2.31.0",
+    "praw>=7.7.0",
+    "PyGithub>=1.59.0",
+    "mwclient>=0.10.0",
+    "stravalib>=1.4.0",
+    "python-multipart>=0.0.6",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.0",
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "ruff>=0.0.280",
+]
+
+[project.scripts]
+udl-server = "src.api.main:run_server"
+udl-analyze = "src.analysis.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
